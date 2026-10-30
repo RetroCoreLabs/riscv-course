@@ -1,2 +1,2 @@
 # Lab start-up script for retrocore and retrocore-cli (--script). Paths are from the course folder.
-kb.load labs/00-registers/registers-rv32.elf
+machine.load labs/00-registers/registers-rv32.elf

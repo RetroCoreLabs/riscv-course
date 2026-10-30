@@ -26,7 +26,7 @@ retrocore-cli --machine riscv32-bare --script labs/00-registers/run.txt
 | Flag | What it does |
 |---|---|
 | `--machine <id>` | Starts that machine, for example `riscv32-bare` or `riscv64-xv6`. |
-| `--script <path>` | Runs a start-up script once the machine is there. A lab's script loads its program. |
+| `--script <path>` | Runs a start-up script once the machine is there. A lab's script loads its program with `machine.load <file>`. |
 | `--dap` | Turns the debugger on and holds the machine before its first instruction, so you can set breakpoints first. `cpu.continue` runs it. |
 
 Each chapter gives both lines; use whichever program you have.

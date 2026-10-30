@@ -1,2 +1,2 @@
 # Lab start-up script for retrocore and retrocore-cli (--script). Paths are from the course folder.
-kb.load labs/10-float/float-rv64.elf
+machine.load labs/10-float/float-rv64.elf
