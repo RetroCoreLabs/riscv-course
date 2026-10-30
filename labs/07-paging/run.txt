@@ -1,0 +1,2 @@
+# Lab start-up script for retrocore and retrocore-cli (--script). Paths are from the course folder.
+kb.load labs/07-paging/paging-rv64.elf

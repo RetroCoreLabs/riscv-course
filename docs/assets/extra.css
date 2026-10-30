@@ -1,0 +1,14 @@
+/* Material hides the header logo below 1220 px wide (it moves into the side drawer). Keep the
+   course icon in the header at every width, so a phone or a narrow window still shows whose
+   site this is. */
+@media screen and (max-width: 76.2344em) {
+  .md-header__button.md-logo {
+    display: inline-block;
+  }
+}
+
+/* A hex word or an instruction in a table cell must not break in the middle ("0x8000000" over
+   "0"). Material scrolls a table that gets too wide, so keeping them on one line is safe. */
+.md-typeset table:not([class]) code {
+  white-space: nowrap;
+}

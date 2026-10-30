@@ -1,0 +1,12 @@
+{
+  "_readme": [
+    "Waivers for check-docs.py, which reads this file from its own directory.",
+    "Every waiver needs a reason. Check codes: LINK ESCAPES ABSPATH MERMAID ALT-TEXT",
+    "EMOJI-HEADING HAND-TOC NEW-HEADING H1 BADGES NAVBAR INSTALL-ORDER LICENCE-LAST ABOUT",
+    "STATUS APPS-TABLE. See AGENTS.md in the repo-standards repository."
+  ],
+
+  "app_folders": [],
+
+  "waivers": []
+}

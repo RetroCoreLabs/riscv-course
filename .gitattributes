@@ -1,0 +1,8 @@
+# Text files are stored with LF line endings.
+* text=auto eol=lf
+
+# Built programs, disk images and pictures are bytes, never text.
+*.elf binary
+*.img binary
+*.png binary
+*.ico binary

@@ -1,0 +1,113 @@
+# The course's web site: https://retrocorelabs.github.io/riscv-course/
+#
+# The pages live in ../docs and are written by hand; this folder holds only the site's settings.
+# MkDocs will not take the folder that holds mkdocs.yml as docs_dir, hence this subfolder.
+# Build it the way CI does, with the output outside the checkout:
+#   pip install -r docs-site/requirements.txt
+#   mkdocs build --strict -f docs-site/mkdocs.yml -d <a folder outside the checkout>
+site_name: Learn RISC-V by running it
+site_description: A RISC-V course run on an emulated RISC-V machine, with a debugger on every step
+site_url: https://retrocorelabs.github.io/riscv-course/
+repo_url: https://github.com/RetroCoreLabs/riscv-course
+repo_name: RetroCoreLabs/riscv-course
+edit_uri: blob/main/docs/
+docs_dir: ../docs
+
+theme:
+  name: material
+  logo: assets/riscv-course.svg
+  favicon: assets/riscv-course.ico
+  palette:
+    - media: "(prefers-color-scheme)"
+      toggle:
+        icon: material/brightness-auto
+        name: Switch to light mode
+    - media: "(prefers-color-scheme: light)"
+      scheme: default
+      primary: amber
+      accent: amber
+      toggle:
+        icon: material/brightness-7
+        name: Switch to dark mode
+    - media: "(prefers-color-scheme: dark)"
+      scheme: slate
+      primary: amber
+      accent: amber
+      toggle:
+        icon: material/brightness-4
+        name: Switch to system preference
+  features:
+    - navigation.indexes
+    - navigation.path
+    - navigation.top
+    - navigation.footer
+    - search.suggest
+    - search.highlight
+    - toc.follow
+    - content.code.copy
+
+plugins:
+  - search
+
+extra_css:
+  - assets/extra.css
+
+markdown_extensions:
+  - toc:
+      permalink: true
+      slugify: !!python/object/apply:pymdownx.slugs.slugify
+        kwds:
+          case: lower
+  - tables
+  - attr_list
+  - md_in_html
+  - admonition
+  - footnotes
+  - def_list
+  - pymdownx.details
+  - pymdownx.superfences
+  - pymdownx.highlight
+  - pymdownx.tabbed:
+      alternate_style: true
+  - mdx_truly_sane_lists:
+      nested_indent: 2
+
+validation:
+  links:
+    not_found: warn
+    anchors: warn
+
+nav:
+  - Home: index.md
+  - Getting RetroCore: getting-retrocore.md
+  - Labs:
+      - labs/README.md
+      - labs/00-registers.md
+      - labs/01-calls.md
+      - labs/02-traps.md
+      - labs/03-mc.md
+      - labs/04-timer.md
+      - labs/05-rtos.md
+      - labs/06-priv.md
+      - labs/07-paging.md
+      - labs/08-virtio.md
+      - labs/09-opensbi.md
+      - labs/10-float.md
+  - Extensions:
+      - extensions/I.md
+      - extensions/M.md
+      - extensions/A.md
+      - extensions/F.md
+      - extensions/D.md
+      - extensions/C.md
+      - extensions/Zicsr.md
+      - extensions/Zifencei.md
+      - extensions/Zicntr.md
+      - extensions/Zihpm.md
+      - extensions/S.md
+      - extensions/Sstc.md
+      - extensions/Zba.md
+      - extensions/Zbb.md
+      - extensions/Zbs.md
+  - Support matrix: support-matrix.md
+  - GitHub: https://github.com/RetroCoreLabs/riscv-course

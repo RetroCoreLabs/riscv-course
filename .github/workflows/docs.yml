@@ -1,0 +1,49 @@
+# Build the course site and publish it to GitHub Pages
+# (https://retrocorelabs.github.io/riscv-course/) on every push to main.
+# A pull request builds and checks it without publishing.
+name: Documentation site
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+      - uses: actions/setup-python@v7
+        with:
+          python-version: "3.12"
+      - name: Check the documents (links, absolute paths, README shape)
+        run: python3 eng/check-docs.py
+      - name: Install MkDocs
+        run: pip install -r docs-site/requirements.txt
+      - name: Build site
+        run: mkdocs build --strict -f docs-site/mkdocs.yml -d "${{ runner.temp }}/site"
+      - uses: actions/upload-pages-artifact@v5
+        if: github.event_name != 'pull_request'
+        with:
+          path: ${{ runner.temp }}/site
+
+  deploy:
+    if: github.event_name != 'pull_request'
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - id: deployment
+        uses: actions/deploy-pages@v5
